@@ -1,0 +1,28 @@
+
+  <div
+    class="card border border-2 rounded-5 shadow h-100"
+    (click)="redirectToProductDetails(product.id)"
+    style=" cursor: pointer"
+  >
+    <img [src]="product.thumbnail" class="card-img-top" alt="..." />
+    <div class="card-body">
+      @if (product.stock > 0) {
+      <span class="badge rounded-pill bg-success">In Stock</span>
+      } @else {
+      <span class="badge rounded-pill bg-danger">Out of Stock</span>
+      }
+      <h5 class="card-title">{{ product.title }}</h5>
+      <p class="card-text">
+        <b>{{ product.price }}$</b>
+      </p>
+      <p class="card-text">Rate: {{ product.rating }}</p>
+      <button
+        type="button"
+        class="btn btn-success rounded-5 "
+        (click)="addToCart($event, product)" 
+      >
+        Add to Cart
+      </button>
+    </div>
+  </div>
+

@@ -1,0 +1,15 @@
+.table td {
+    vertical-align: middle;
+}
+.btn{
+width: 35px;
+}
+.btn-outline-danger{
+    width: 50px;
+}
+.container{
+    margin-top: 100px;
+}
+.stock{
+    color: goldenrod;
+}

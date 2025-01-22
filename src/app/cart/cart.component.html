@@ -1,0 +1,105 @@
+
+@if (count === 0) {
+  <div class="container">
+
+  <h1 class="mb-4" style="text-align: center;
+  color: #00b909;">Cart is Empty!</h1>
+  </div>
+}
+@else {
+<div class="container ">
+  <h1 class="mb-4">Cart</h1>
+  <div class="table-responsive">
+    <table class="table align-middle">
+      <thead class="table-light">
+        <tr>
+          <th scope="col" style="width: 15%">Description</th>
+          <th scope="col" style="width: 10%">Quantity</th>
+          <th scope="col" style="width: 10%">Remove</th>
+          <th scope="col" style="width: 10%">Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (product of productsArr; track product.id) {
+        <tr class="align-items-center">
+          <td>
+            <div class="d-flex align-items-center">
+              <img
+                [src]="product.thumbnail"
+                alt="Headphones"
+                class="img-fluid rounded me-3"
+                style="width: 80px; height: auto"
+              />
+              <div>
+                <p class="mb-1 fw-bold">{{ product.title }}</p>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class=" h-100">
+              <div class="d-flex align-items-center mb-2">
+                @if (product.count === product.stock) {
+                  <button class="btn btn-success btn-sm" disabled>
+                    +
+                  </button>
+                }
+                @else {
+                  <button class="btn btn-success btn-sm" (click)="add(product)">
+                    +
+                  </button>
+                }
+                <span class="mx-2">{{ product.count }}</span>
+                @if (product.count !== undefined && product.count > 1) {
+                  <button
+                    class="btn btn-outline-dark btn-sm"
+                    (click)="sub(product)"
+                  >
+                    -
+                  </button>
+                }
+                @else {
+                  <button
+                    class="btn btn-outline-dark btn-sm"
+                    disabled
+                  >
+                    -
+                  </button>
+                }
+              </div>
+              <span class="text-muted small">Stock: {{ product.stock }}</span>
+            </div>
+          </td>
+          
+          
+          
+          
+          
+          <td>
+            <button
+              class="btn btn-outline-danger btn-sm"
+              (click)="removeItem(product)"
+            >
+              ×
+            </button>
+          </td>
+          <td>
+            <p class="fw-bold">${{ product.price }}</p>
+
+          </td>
+        </tr>
+      }
+      <tr class="align-content-lg-between">
+
+        
+        <div class="card text-dark bg-light mb-3 align-content-center" style="width: 200px;">
+          <div class="card-header fw-bold text-center">Total Price</div>
+          <div class="card-body">
+            <h2 class="card-title text-center">${{totalPrice | number}}</h2>
+          </div>
+        </div>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+}

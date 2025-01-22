@@ -1,0 +1,14 @@
+.navbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+     /* Ensures the header stays on top of other content */
+    width: 100%;
+
+}
+.nav-item .active-link{
+    color: #00b909;
+    border: 2px solid #00b909;
+    margin-right: 10px;
+    cursor: pointer;
+}

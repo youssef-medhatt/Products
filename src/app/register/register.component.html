@@ -1,0 +1,78 @@
+<div class="container">
+  <form
+    class="form mt-5"
+    (ngSubmit)="onSubmit(registerForm)"
+    [formGroup]="registerForm"
+  >
+    <div class="mb-3">
+      <label for="validationCustom01" class="form-label">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        formControlName="name"
+      />
+    </div>
+    @if(formControls['name'].invalid && formControls['name'].touched){
+        <div class="alert alert-danger" role="alert">
+          Please enter a valid Name.
+        </div>
+        }
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        formControlName="email"
+      />
+      <div id="emailHelp" class="form-text">
+        We'll never share your email with anyone else.
+      </div>
+    </div>
+    @if(formControls['email'].invalid && formControls['email'].touched){
+    <div class="alert alert-danger" role="alert">
+      Please enter a valid Email.
+    </div>
+    }
+    <div class="mb-3">
+        <label for="validationCustom01" class="form-label">User Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="username"
+          formControlName="username"
+        />
+      </div>
+      @if(formControls['username'].invalid && formControls['username'].touched){
+          <div class="alert alert-danger" role="alert">
+            Please enter a valid User Name.
+          </div>
+          }
+    <label for="inputPassword5" class="form-label">Password</label>
+    <input
+      type="password"
+      id="inputPassword5"
+      class="form-control"
+      aria-describedby="passwordHelpBlock"
+      formControlName="password"
+    />
+    @if (formControls['password'].invalid && formControls['password'].touched) {
+    <div class="alert alert-danger" role="alert">
+      Please enter a valid password.
+    </div>
+    }
+    <div id="passwordHelpBlock" class="form-text">
+      Your password must be 8-20 characters long, contain letters and numbers,
+      and must not contain spaces, special characters, or emoji.
+    </div>
+    <button
+      type="submit"
+      class="btn btn-primary mt-5"
+      [disabled]="registerForm.invalid"
+    >
+      Submit
+    </button>
+  </form>
+</div>

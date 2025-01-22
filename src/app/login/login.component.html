@@ -1,0 +1,43 @@
+<div class="container">
+  <form class="mt-10" (ngSubmit)="onSubmit(loginForm.value)" #loginForm="ngForm">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        required
+        ngModel
+        name="email"
+        #email="ngModel"
+        pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+      />
+      @if (email.invalid && email.touched) {
+      <div class="alert alert-danger" role="alert">
+        Please enter a valid email address.
+      </div>
+      }
+      <div id="emailHelp" class="form-text">
+        We'll never share your email with anyone else.
+      </div>
+    </div>
+    <label for="inputPassword5" class="form-label">Password</label>
+    <input
+      type="password"
+      id="inputPassword5"
+      class="form-control"
+      aria-describedby="passwordHelpBlock"
+      required
+      ngModel
+      name="password"
+      #password="ngModel"
+    />
+    @if (password.invalid && password.touched) {
+    <div class="alert alert-danger" role="alert">
+      Please enter a valid password.
+    </div>
+    }
+    <button type="submit" class="btn btn-primary mt-5" [disabled]="loginForm.invalid">Submit</button>
+  </form>
+</div>
